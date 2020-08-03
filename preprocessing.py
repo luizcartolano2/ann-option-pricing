@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from impliedVolatility.volimp import volimp
+from impliedVolatility.ImpliedVolatility import ImpliedVolatility
 
 # read DataFrames with available info about options
 df_contracts = pd.read_csv('data-source/contracts.csv', usecols=['commodity', 'contract', 'expiry_date'])
@@ -41,9 +41,11 @@ prices = df_opt['settle_price'].values.reshape((-1, 1))
 underlying = df_opt['future_price'].values.reshape((-1, 1))
 strike = df_opt['strike_value'].values.reshape((-1, 1))
 call_put = df_opt['put_or_call'].values.reshape((-1, 1)).astype('float64')
-r = np.log(1.00501)
 tenor = df_opt['tenor'].values.reshape((-1, 1))
-i, temp, vols = volimp(prices, underlying, strike, call_put, r, tenor, 0.0001, 2000)
+
+# instantiate implied vol class and calculate bissec method
+implied_volatility = ImpliedVolatility(np.log(1.00501), 0.0001, 2000, 0)
+i, temp, vols = implied_volatility.implied_volatility_bissec(prices, underlying, strike, call_put, tenor)
 
 # add the implied volatility
 # to the options DataFrame
