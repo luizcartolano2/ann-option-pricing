@@ -1,0 +1,143 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="2814" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="django-heroku" />
+            <item index="1" class="java.lang.String" itemvalue="psycopg2" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="E303" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="E722" />
+          <option value="E731" />
+          <option value="E127" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="input" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="bookmanagement.models.Contracts.*" />
+          <option value="bookmanagement.models.contractFuturePrice.*" />
+          <option value="bookmanagement.models.contractSettlePrice.*" />
+          <option value="bookmanagement.models.BMFRate.objects" />
+          <option value="bookmanagement.models.BMFDollarVolatilitySurface.*" />
+          <option value="object.*" />
+          <option value="bookmanagement.models.TraderVolSpread.*" />
+          <option value="django.contrib.auth.models.User.*" />
+          <option value="authentication.models.Product.objects" />
+          <option value="authentication.models.SubscriptionPlan.objects" />
+          <option value="authentication.models.ProfileFarmer.objects" />
+          <option value="authentication.models.ProfileTrader.objects" />
+          <option value="authentication.models.ProfileFarmerIndependent.objects" />
+          <option value="bookmanagement.models.DerivativeDailyInfos.objects" />
+          <option value="bookmanagement.models.Derivative.objects" />
+          <option value="uc_ast.Node.*" />
+          <option value="llvmlite.ir.types.IntType.*" />
+          <option value="bookmanagement.models.Book.*" />
+          <option value="polls.models.MarketData.objects" />
+          <option value="bookmanagement.models.Derivative.object" />
+          <option value="authentication.models.ProfileTrader.id" />
+          <option value="authentication.models.ProfileFarmer.id" />
+          <option value="newsSentiment.models.News.*" />
+          <option value="datetime.date.today" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
