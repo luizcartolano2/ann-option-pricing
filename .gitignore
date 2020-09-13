@@ -1,6 +1,9 @@
 # Data Source
 data-source/
 related-works/
+models/
+optimizer/
+records/
 
 # ignore MAC DS Store files
 .DS_Store
