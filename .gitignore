@@ -4,6 +4,7 @@ related-works/
 models/
 optimizer/
 records/
+figures/
 
 # ignore MAC DS Store files
 .DS_Store
