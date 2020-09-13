@@ -57,3 +57,20 @@ class MultilayerPerceptron(nn.Module):
         output = self.output(x)
 
         return output
+
+    def step(self, x, y, optimizer):
+        optimizer.zero_grad()
+
+        loss = self.get_loss(x, y)
+        loss.backward()
+        optimizer.step()
+
+        return loss
+
+    def get_loss(self, x, y):
+        predicted = self.forward(x.float())
+
+        # Weighted MSE Loss
+        loss = nn.functional.mse_loss(predicted, y.float())
+
+        return loss.float()
