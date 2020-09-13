@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 
 class LSTM(nn.Module):
-    def __init__(self, input_size, lstm_size, lstm_layers=4, output_size=1, dropout=0.1):
+    def __init__(self, input_size, lstm_size=100, lstm_layers=4, output_size=1, dropout=0.1):
         """
 
             :param input_size:
