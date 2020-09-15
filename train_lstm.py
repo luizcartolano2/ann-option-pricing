@@ -68,7 +68,7 @@ print(M_lstm)
 print('='*50)
 
 # Create optimizer
-optimizer = torch.optim.Adam(M_lstm.parameters(), lr=0.0001)
+optimizer = torch.optim.Adam(M_lstm.parameters(), lr=0.001)
 
 # Train
 save_model_path = f'models/train_model_lstm_at_{today_datetime}.model'
@@ -78,7 +78,7 @@ save_optimizer_path = f'optimizer/optimizer_model_lstm_at_{today_datetime}.optim
 print('Record loss in: ', record_path)
 min_loss_t = 1e10
 min_loss_v = 1e10
-epochs = 200
+epochs = 500
 batch_size = 8
 
 M_lstm.train()
@@ -97,7 +97,8 @@ for ep in range(epochs):
 
         hidden = M_lstm.init_hidden(batch_size=t_x.shape[0])
 
-        ls, hidden = M_lstm.step(t_x, t_y, optimizer, hidden).data.cpu().numpy()
+        ls, hidden = M_lstm.step(t_x.view(1, t_x.shape[0], -1), t_y, optimizer, hidden)
+        ls = ls.data.cpu().numpy()
         t_loss_list.append(float(ls))
         loss_mean += float(ls)
 
@@ -114,9 +115,10 @@ for ep in range(epochs):
             v_x = v_x.cuda(non_blocking=True)
             v_y = v_y.cuda(non_blocking=True)
 
-        test_hidden = M_lstm.init_hidden(v_x.shape[0])
+        test_hidden = M_lstm.init_hidden(batch_size=v_x.shape[0])
 
-        v_ls, test_hidden = M_lstm.get_loss(v_x, v_y, test_hidden).data.cpu().numpy()
+        v_ls, hidden = M_lstm.step(v_x.view(1, v_x.shape[0], -1), v_y, optimizer, test_hidden)
+        v_ls = v_ls.data.cpu().numpy()
         v_loss_list.append(float(v_ls))
         loss_mean_valid += float(v_ls)
 

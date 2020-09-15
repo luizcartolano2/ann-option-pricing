@@ -26,7 +26,6 @@ class LSTM(nn.Module):
                             dropout=self.dropout, batch_first=False)
 
         # Setup additional layers
-        self.dropout = nn.Dropout(self.dropout)
         self.fc = nn.Linear(self.lstm_size, self.output_size)
 
     def forward(self, x, hidden_state):
@@ -39,10 +38,9 @@ class LSTM(nn.Module):
         nn_input = x.float()
         lstm_out, hidden_state = self.lstm(nn_input, hidden_state)
 
-        # lstm_out = lstm_out[-1, :, :]
+        lstm_out = lstm_out[-1, :, :]
         # Dropout and fc layer
-        out = self.dropout(lstm_out)
-        out = self.fc(out)
+        out = self.fc(lstm_out)
 
         return out, hidden_state
 
@@ -91,7 +89,7 @@ class LSTM(nn.Module):
             :param hidden_state:
             :return:
         """
-        predicted, new_hidden_state = self.forward(x.float(), hidden_state)
+        predicted, new_hidden_state = self.forward(x, hidden_state)
 
         # Weighted MSE Loss
         loss = nn.functional.mse_loss(predicted, y.float())
