@@ -4,6 +4,7 @@
       <w>cuda</w>
       <w>dataframe</w>
       <w>dataloader</w>
+      <w>histvol</w>
       <w>lstm</w>
       <w>perceptron</w>
       <w>relu</w>
