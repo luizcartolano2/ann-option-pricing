@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import re
 
-filename = 'records/loss_20-09-13.txt'
+filename = 'records/loss_lstm_20-09-14.txt'
 
 with open(filename) as f:
     lines = f.readlines()
@@ -39,4 +39,4 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss (MSE)')
 plt.legend()
 
-plt.savefig('figures/train-mlp-impvol.png')
+plt.savefig('figures/train-lstm-impvol.png')
