@@ -3,7 +3,6 @@ import warnings
 import numpy as np
 from scipy.stats import norm
 
-
 warnings.filterwarnings("ignore")
 
 
@@ -29,7 +28,7 @@ class ImpliedVolatility:
 
     def __black_d1(self, spot, strike, tenor, sigma):
         """
-            Python for d1 preliminare calculation for black scholes model.
+            Python for d1 preliminary calculation for black scholes model.
 
             :param spot: price of the underlying asset on the valuation date.
             :param strike: strike, or exercise, price of the option.
@@ -47,7 +46,7 @@ class ImpliedVolatility:
 
     def __black_d2(self, spot, strike, tenor, sigma):
         """
-            Python for d2 preliminare calculation for black scholes model.
+            Python for d2 preliminary calculation for black scholes model.
 
             :param spot: price of the underlying asset on the valuation date.
             :param strike: strike, or exercise, price of the option.

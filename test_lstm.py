@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from src.MultilayerPerceptron import MultilayerPerceptron
-from src.predict import predict_mlp
+from src.LSTM import LSTM
+from src.predict import predict_lstm
 import torch
 
 modes = ['impvol', 'histvol']
@@ -10,26 +10,26 @@ modes = ['impvol', 'histvol']
 for mode in modes:
     if mode == 'impvol':
         test_df = pd.read_csv('data-source/test_df.csv')
-        model_path = 'models/train_model_at_20-09-13.model.train'
+        model_path = 'models/train_model_lstm_at_20-09-15.model.train'
     else:
         test_df = pd.read_csv('data-source/test_df_histvol.csv')
-        model_path = 'models/train_model_histvol_at_20-09-16.model.train'
+        model_path = 'models/train_model_lstm_histvol_at_20-09-16.model.train'
 
     # read x_values and y_values
     y_values = test_df[['result']].values
     x_values = test_df.drop(['result'], axis=1).values
 
-    M_mlp = MultilayerPerceptron(x_values.shape[1])
+    M_lstm = LSTM(x_values.shape[1])
 
-    M_mlp.load_state_dict(torch.load(model_path))
+    M_lstm.load_state_dict(torch.load(model_path))
     use_cuda = torch.cuda.is_available()
     if use_cuda:
         print('CUDA used.')
-        M_mlp = M_mlp.cuda()
+        M_lstm = M_lstm.cuda()
 
-    M_mlp.eval()
+    M_lstm.eval()
 
-    results = predict_mlp(x_values, M_mlp)
+    results = predict_lstm(x_values, M_lstm)
 
     data = {'results': results.reshape(-1,),
             'expected': y_values.reshape(-1,)}
@@ -45,7 +45,7 @@ for mode in modes:
     final_df['pe10'] = 100 * sum(np.abs(final_df['rel']) < 0.10) / len(final_df['rel'])
     final_df['pe20'] = 100 * sum(np.abs(final_df['rel']) < 0.20) / len(final_df['rel'])
 
-    final_df.to_csv(f'data-source/mlp-results-{mode}.csv', index=False)
+    final_df.to_csv(f'data-source/lstm-results-{mode}.csv', index=False)
 
     statistics = {
         'max': np.max(final_df['diff']),
@@ -64,7 +64,7 @@ for mode in modes:
     }
 
     # write response to a .txt file
-    with open(f'data-source/mlp-statistics-{mode}.txt', 'w') as f:
+    with open(f'data-source/lstm-statistics-{mode}.txt', 'w') as f:
         for key, value in statistics.items():
             f.write(f'{key}: {value} \n\n')
 
