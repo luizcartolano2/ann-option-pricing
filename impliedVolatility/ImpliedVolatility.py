@@ -133,6 +133,7 @@ class ImpliedVolatility:
             :return:
         """
         risk_free = self.__risk_free
+        call_put = self.__check_input(call_put)
 
         # calcula os precos de put e call pelo modelo de black-scholes
         call_prices = self.euro_vanilla_call(underlying, strike, tenor, sigma)
